@@ -26,8 +26,8 @@ spring:
             provider: okta
             authorization-grant-type: client_credentials
             scope: internal
-            client-id: 
-            client-secret: 
+            client-id: 0oapqvhkafcaZpm4Z5d7
+            client-secret: u9-DfB9zDGMAZnlynGCEvzlzAFe4qKiXO8fTSAE852jWyis6lxnR0-jqtXHBdwfL
         provider:
           okta:
             issuer-uri: https://dev-02439493.okta.com/oauth2/default
@@ -46,9 +46,9 @@ resilience4j:
         sliding-window-type: COUNT_BASED
 
 microservice:
-  PRODUCT-SERVICE: http://product-service-svc/products/
-  PAYMENT-SERVICE: http://payment-service-svc/payments/
-  ORDER-SERVICE: http://order-service-svc/orders/
+  PRODUCT-SERVICE: http://PRODUCT-SERVICE/products/
+  PAYMENT-SERVICE: http://PAYMENT-SERVICE/payments/
+  ORDER-SERVICE: http://ORDER-SERVICE/orders/
 
 logging:
   level:
