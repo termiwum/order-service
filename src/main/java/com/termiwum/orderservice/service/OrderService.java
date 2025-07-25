@@ -1,20 +1,11 @@
 package com.termiwum.orderservice.service;
 
-import com.termiwum.orderservice.model.Order;
-import org.springframework.stereotype.Service;
-import java.util.*;
+import com.termiwum.orderservice.model.OrderRequest;
+import com.termiwum.orderservice.model.OrderResponse;
 
-@Service
-public class OrderService {
-    private final List<Order> orders = new ArrayList<>();
+public interface OrderService {
 
-    public List<Order> getAllOrders() {
-        return orders;
-    }
+    long placeOrder(OrderRequest orderRequest);
 
-    public Order createOrder(Order order) {
-        order.setId((long) (orders.size() + 1));
-        orders.add(order);
-        return order;
-    }
+    OrderResponse getOrderDetails(long orderId);
 }
