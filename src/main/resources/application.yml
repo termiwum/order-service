@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:3306/order_db
+    url: jdbc:mysql://localhost:3306/order_db
     username: admin
     password: admin
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -14,7 +14,7 @@ spring:
   application:
     name: ORDER-SERVICE
   config:
-    import: configserver:${CONFIG_SERVER_URL:http://localhost:9296}
+    import: configserver:http://localhost:9296
   security:
     oauth2:
       resourceserver:
@@ -46,8 +46,8 @@ resilience4j:
         sliding-window-type: COUNT_BASED
 
 microservice:
-  PRODUCT-SERVICE: http://product-service-svc/product/
-  PAYMENT-SERVICE: http://payment-service-svc/payment/
+  PRODUCT-SERVICE: http://product-service-svc/products/
+  PAYMENT-SERVICE: http://payment-service-svc/payments/
   ORDER-SERVICE: http://order-service-svc/orders/
 
 logging:
@@ -55,12 +55,3 @@ logging:
     "[com.termiwum.orderservice.controller]": INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
-
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#  client:
-#    fetch-registry: true
-#    register-with-eureka: true
-#    service-url:
-#      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
