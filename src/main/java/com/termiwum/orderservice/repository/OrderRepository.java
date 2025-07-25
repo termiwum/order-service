@@ -1,18 +1,10 @@
 package com.termiwum.orderservice.repository;
 
-import com.termiwum.orderservice.model.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.*;
+
+import com.termiwum.orderservice.entity.Order;
 
 @Repository
-public class OrderRepository {
-    private final List<Order> orders = new ArrayList<>();
-
-    public List<Order> findAll() {
-        return orders;
-    }
-
-    public void save(Order order) {
-        orders.add(order);
-    }
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }
