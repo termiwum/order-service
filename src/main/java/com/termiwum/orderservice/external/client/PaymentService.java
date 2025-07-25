@@ -11,7 +11,7 @@ import com.termiwum.orderservice.external.request.PaymentRequest;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @CircuitBreaker(name = "external", fallbackMethod = "fallback")
-@FeignClient(name = "payment", url = "${microservice.payment}")
+@FeignClient(name = "PAYMENT-SERVICE", path = "/payments")
 public interface PaymentService {
 
     @PostMapping

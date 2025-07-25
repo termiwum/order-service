@@ -21,8 +21,10 @@ public class CustomErrorDecoder implements ErrorDecoder {
         log.info("::{}", response.request().headers());
 
         try {
+            if (response.body() == null) {
+                return new CustomException("No response body", "NO_BODY", response.status());
+            }
             ErrorResponse errorResponse = objectMapper.readValue(response.body().asInputStream(), ErrorResponse.class);
-
             return new CustomException(errorResponse.getErrorMessage(), errorResponse.getErrorCode(),
                     response.status());
         } catch (IOException e) {

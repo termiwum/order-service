@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.security.access.prepost.PreAuthorize;
+// import org.springframework.security.access.prepost.PreAuthorize;
 
 @RestController
 @RequestMapping("/orders")
@@ -22,9 +22,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PreAuthorize("hasAuthority('Customer')")
+    // @PreAuthorize("hasAuthority('Customer')")
     @PostMapping("placeOrder")
     public ResponseEntity<Long> placeOrder(@RequestBody OrderRequest orderRequest) {
+        log.info("[CONTROLLER] Petición recibida en /orders/placeOrder: {}", orderRequest);
         long orderId = orderService.placeOrder(orderRequest);
         log.info("Order placed with ID: {}", orderId);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
