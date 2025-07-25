@@ -25,13 +25,17 @@ public class OrderController {
     @PreAuthorize("hasAuthority('Customer')")
     @PostMapping("placeOrder")
     public ResponseEntity<Long> placeOrder(@RequestBody OrderRequest orderRequest) {
+        log.debug("Received placeOrder request: {}", orderRequest);
         long orderId = orderService.placeOrder(orderRequest);
         log.info("Order placed with ID: {}", orderId);
+        log.debug("Returning response with orderId: {}", orderId);
         return new ResponseEntity<>(orderId, HttpStatus.OK);
     }
 
     public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable long orderId) {
+        log.debug("Received getOrderDetails request for orderId: {}", orderId);
         OrderResponse orderResponse = orderService.getOrderDetails(orderId);
+        log.debug("Returning response: {}", orderResponse);
         return new ResponseEntity<>(orderResponse, HttpStatus.OK);
     }
 

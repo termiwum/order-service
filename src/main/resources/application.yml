@@ -46,8 +46,15 @@ resilience4j:
         sliding-window-type: COUNT_BASED
 
 microservice:
-  product: http://product-service-svc/product/
-  payment: http://payment-service-svc/payment/
+  PRODUCT-SERVICE: http://product-service-svc/product/
+  PAYMENT-SERVICE: http://payment-service-svc/payment/
+  ORDER-SERVICE: http://order-service-svc/orders/
+
+logging:
+  level:
+    "[com.termiwum.orderservice.controller]": INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
 
 #eureka:
 #  instance:
